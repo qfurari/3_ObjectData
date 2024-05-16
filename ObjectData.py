@@ -219,13 +219,13 @@ class ObjectData(OpenRTM_aist.DataFlowComponentBase):
             print(f"Received amplitude: {amplitude}")
             
             image = self.generate_image(amplitude)
-            success, buffer = cv2.imencode('.png', image)
-            if not success:
-              print("Error: Failed to encode image")
-              return RTC.RTC_ERROR
             
-            self._d_image.data = buffer.tobytes()
-            self._imageOut.write(self._d_image)
+            buffer = cv2.imencode('.png', image)
+            image_data = RTC.TimedOctetSeq(RTC.Time(0, 0), buffer.tobytes())
+            
+
+            #self._d_image.data = buffer.tobytes()
+            self._imageOut.write(voice_amp)
             print("Image sent successfully")
     
          return RTC.RTC_OK
