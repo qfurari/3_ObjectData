@@ -225,7 +225,7 @@ class ObjectData(OpenRTM_aist.DataFlowComponentBase):
             
 
             #self._d_image.data = buffer.tobytes()
-            self._imageOut.write(voice_amp)
+            self._imageOut.write(image_data)
             print("Image sent successfully")
     
          return RTC.RTC_OK
