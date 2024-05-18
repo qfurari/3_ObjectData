@@ -220,7 +220,7 @@ class ObjectData(OpenRTM_aist.DataFlowComponentBase):
             
             image = self.generate_image(amplitude)
             
-            buffer = cv2.imencode('.png', image)
+            _,buffer = cv2.imencode('.png', image)
             image_data = RTC.TimedOctetSeq(RTC.Time(0, 0), buffer.tobytes())
             
 
